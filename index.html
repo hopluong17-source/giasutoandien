@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gia Sư Toàn Diện - Hệ thống Quản lý Chuyên nghiệp</title>
+    <title>Gia Sư Toàn Diện - Nền tảng giáo dục hàng đầu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -24,9 +24,16 @@
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f8f9fa;
             color: var(--text);
             line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
 
         /* Navigation */
@@ -42,9 +49,6 @@
         }
 
         .nav-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -57,10 +61,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-        }
-
-        .logo i {
-            color: var(--secondary);
         }
 
         .nav-links {
@@ -77,68 +77,32 @@
             padding: 0.5rem 1rem;
             border-radius: 25px;
             transition: all 0.3s ease;
-            position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--primary);
             background: rgba(52, 152, 219, 0.1);
         }
 
-        .nav-links a.active {
-            color: var(--primary);
-            background: rgba(52, 152, 219, 0.1);
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 100px 0 50px;
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-        }
-
-        .hero-content {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 150px 0 100px;
             text-align: center;
+            margin-top: 70px;
         }
 
-        .hero h1 {
+        .hero-banner h1 {
             font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 700;
-            line-height: 1.2;
         }
 
-        .hero p {
+        .hero-banner p {
             font-size: 1.3rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
         }
 
         .btn {
@@ -158,32 +122,12 @@
         .btn-primary {
             background: var(--secondary);
             color: white;
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary);
-        }
-
-        /* Features Preview */
-        .features-preview {
-            background: white;
+        /* About Section */
+        .about-section {
             padding: 80px 0;
-            border-radius: 50px 50px 0 0;
-            margin-top: -50px;
-            position: relative;
+            background: white;
         }
 
         .section-title {
@@ -197,139 +141,376 @@
             margin-bottom: 1rem;
         }
 
-        .section-title p {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-        }
-
-        .features-grid {
+        .about-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .about-features li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-features i {
+            color: var(--secondary);
+        }
+
+        /* Blog Section */
+        .blog-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
         }
 
-        .feature-card {
+        .blog-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
+            border-radius: 15px;
+            overflow: hidden;
             box-shadow: var(--shadow);
-            text-align: center;
             transition: transform 0.3s ease;
-            border: 1px solid #f8f9fa;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
+        .blog-card:hover {
+            transform: translateY(-5px);
         }
 
-        .feature-icon {
-            width: 80px;
-            height: 80px;
+        .blog-image {
+            height: 200px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
             color: white;
+            font-size: 3rem;
         }
 
-        .feature-card h3 {
-            font-size: 1.5rem;
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--dark);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
+        <div class="container">
             <div class="logo">
                 <i class="fas fa-graduation-cap"></i>
                 Gia Sư Toàn Diện
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Trang chủ</a></li>
-                <li><a href="features.html"><i class="fas fa-star"></i> Tính năng</a></li>
-                <li><a href="dashboard.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
-                <li><a href="login.html" class="btn-outline" style="color: var(--primary); border-color: var(--primary);"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
-                <li><a href="register.html" class="btn-primary"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
+                <li><a href="index.html" class="active">Trang chủ</a></li>
+                <li><a href="features.html">Tính năng</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html">Đăng nhập</a></li>
+                <li><a href="register.html" class="btn btn-primary">Đăng ký</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Hệ Thống Quản Lý Gia Sư <span style="color: var(--secondary)">Thông Minh</span></h1>
-            <p>Giải pháp toàn diện giúp quản lý trung tâm gia sư hiệu quả, tiết kiệm thời gian và tăng năng suất làm việc</p>
-            <div class="btn-group">
-                <a href="features.html" class="btn btn-primary">
-                    <i class="fas fa-rocket"></i> Khám phá ngay
-                </a>
-                <a href="register.html" class="btn btn-outline">
-                    <i class="fas fa-play-circle"></i> Bắt đầu miễn phí
-                </a>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="container">
+            <h1>Gia Sư Toàn Diện - Nâng Tầm Tri Thức</h1>
+            <p>Kết nối gia sư chất lượng với học viên trên toàn quốc. Cam kết mang lại hiệu quả học tập tốt nhất.</p>
+            <a href="register.html" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Đăng ký ngay
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Về Chúng Tôi</h2>
+                <p>Trung tâm gia sư uy tín với hơn 5 năm kinh nghiệm</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Gia Sư Toàn Diện - Sự lựa chọn tin cậy</h3>
+                    <p>Với đội ngũ gia sư chất lượng cao, nhiều năm kinh nghiệm và phương pháp giảng dạy hiện đại, chúng tôi cam kết mang lại kết quả học tập tốt nhất cho học viên.</p>
+                    
+                    <ul class="about-features">
+                        <li><i class="fas fa-check"></i> Đội ngũ gia sư có chuyên môn cao</li>
+                        <li><i class="fas fa-check"></i> Phương pháp giảng dạy hiện đại</li>
+                        <li><i class="fas fa-check"></i> Cam kết chất lượng đầu ra</li>
+                        <li><i class="fas fa-check"></i> Hỗ trợ 24/7</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); height: 300px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                        <i class="fas fa-chalkboard-teacher" style="font-size: 4rem;"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Preview -->
-    <section class="features-preview">
-        <div class="section-title">
-            <h2>Tính Năng Nổi Bật</h2>
-            <p>Khám phá những tính năng ưu việt giúp quản lý trung tâm hiệu quả</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-                <h3>Quản lý Gia sư</h3>
-                <p>Theo dõi thông tin, lịch dạy và đánh giá chất lượng gia sư</p>
+    <!-- Blog Section -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bài Viết Mới Nhất</h2>
+                <p>Cập nhật kiến thức và phương pháp học tập hiệu quả</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-user-graduate"></i>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">15/12/2023 • Học tập</div>
+                        <h3>Phương pháp học Toán hiệu quả cho học sinh cấp 2</h3>
+                        <p>Khám phá những bí quyết giúp học sinh yêu thích và học tốt môn Toán...</p>
+                    </div>
                 </div>
-                <h3>Quản lý Học viên</h3>
-                <p>Quản lý hồ sơ, lịch học và kết quả học tập của học viên</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-book-open"></i>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">12/12/2023 • Tiếng Anh</div>
+                        <h3>Lộ trình học Tiếng Anh giao tiếp trong 3 tháng</h3>
+                        <p>Hướng dẫn chi tiết lộ trình chinh phục Tiếng Anh giao tiếp chỉ trong 90 ngày...</p>
+                    </div>
                 </div>
-                <h3>Quản lý Lớp học</h3>
-                <p>Tạo và quản lý lớp học, phân công gia sư phù hợp</p>
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">10/12/2023 • Kỹ năng</div>
+                        <h3>Rèn luyện tư duy phản biện cho trẻ</h3>
+                        <p>Phát triển kỹ năng tư duy phản biện - chìa khóa thành công trong tương lai...</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Gia sư chất lượng</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2,000+</h3>
+                    <p>Học viên theo học</p>
+                </div>
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>Hài lòng với dịch vụ</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5+</h3>
+                    <p>Năm kinh nghiệm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Đội Ngũ Gia Sư Tiêu Biểu</h2>
+                <p>Những gia sư xuất sắc với thành tích nổi bật</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Thầy Nguyễn Văn A</h3>
+                    <p>Chuyên Toán - Lý</p>
+                    <p>5 năm kinh nghiệm</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Cô Trần Thị B</h3>
+                    <p>Chuyên Tiếng Anh</p>
+                    <p>IELTS 8.5</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Thầy Lê Văn C</h3>
+                    <p>Chuyên Hóa - Sinh</p>
+                    <p>Thạc sĩ Sinh học</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Gia Sư Toàn Diện</h3>
+                    <p>Nền tảng kết nối gia sư và học viên uy tín hàng đầu Việt Nam.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên kết nhanh</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="features.html">Tính năng</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="login.html">Đăng nhập</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> 0123.456.789</li>
+                        <li><i class="fas fa-envelope"></i> info@giasutoandien.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Nguyễn Văn Linh, Q.7, TP.HCM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Gia Sư Toàn Diện. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
