@@ -4,27 +4,336 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng ký - Gia Sư Toàn Diện</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #3498db; --secondary: #2ecc71; --dark: #2c3e50; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI'; }
-        
-        .navbar { background: white; padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
-        .nav-container { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
-        .nav-links { display: flex; list-style: none; gap: 2rem; }
-        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-        
-        .register { padding: 120px 0 80px; }
-        .register-form { max-width: 400px; margin: 0 auto; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .form-group { margin-bottom: 1rem; }
-        .form-group input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #34495e;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Register Container */
+        .register-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .register-left {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .register-left h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .register-left p {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .register-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .benefits-list {
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .benefits-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .register-right {
+            padding: 3rem;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .register-header h1 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .register-header p {
+            color: #7f8c8d;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 15px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-register:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .terms-agreement {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .terms-agreement a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .terms-agreement a:hover {
+            text-decoration: underline;
+        }
+
+        .login-link {
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        .login-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .register-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .register-left {
+                display: none;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">Gia Sư Toàn Diện</div>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Gia Sư Toàn Diện
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Trang chủ</a></li>
                 <li><a href="features.html">Tính năng</a></li>
@@ -35,22 +344,141 @@
         </div>
     </nav>
 
-    <section class="register">
-        <div class="register-form">
-            <h2>Đăng ký tài khoản</h2>
+    <!-- Register Container -->
+    <div class="register-container">
+        <div class="register-left">
+            <div class="register-icon">
+                <i class="fas fa-user-plus"></i>
+            </div>
+            <h2>Bắt đầu hành trình!</h2>
+            <p>Tham gia cùng hơn 500 trung tâm gia sư trên toàn quốc</p>
+            
+            <div class="benefits-list">
+                <div style="margin-bottom: 1.5rem; font-weight: 600;">Lợi ích khi đăng ký:</div>
+                <ul style="list-style: none;">
+                    <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Quản lý gia sư chuyên nghiệp</li>
+                    <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Theo dõi học viên hiệu quả</li>
+                    <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Tự động hóa công việc</li>
+                    <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Báo cáo thông minh</li>
+                    <li><i class="fas fa-check-circle" style="color: #2ecc71;"></i> Hỗ trợ 24/7</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="register-right">
+            <div class="register-header">
+                <h1>Tạo tài khoản</h1>
+                <p>Điền thông tin để bắt đầu sử dụng hệ thống</p>
+            </div>
+
             <form>
-                <div class="form-group">
-                    <input type="text" placeholder="Họ và tên">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName" class="form-label">Họ và tên đệm</label>
+                        <input type="text" id="firstName" class="form-control" placeholder="Nhập họ và tên đệm" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="form-label">Tên</label>
+                        <input type="text" id="lastName" class="form-control" placeholder="Nhập tên" required>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <input type="email" placeholder="Email">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Nhập email của bạn" required>
                 </div>
+
                 <div class="form-group">
-                    <input type="password" placeholder="Mật khẩu">
+                    <label for="phone" class="form-label">Số điện thoại</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="Nhập số điện thoại" required>
                 </div>
-                <button type="submit" class="btn">Đăng ký</button>
+
+                <div class="form-group">
+                    <label for="centerName" class="form-label">Tên trung tâm</label>
+                    <input type="text" id="centerName" class="form-control" placeholder="Nhập tên trung tâm của bạn">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password" class="form-label">Mật khẩu</label>
+                        <input type="password" id="password" class="form-control" placeholder="Tạo mật khẩu" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="Nhập lại mật khẩu" required>
+                    </div>
+                </div>
+
+                <div class="terms-agreement">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Tôi đồng ý với <a href="#">Điều khoản dịch vụ</a> và <a href="#">Chính sách bảo mật</a></label>
+                </div>
+
+                <button type="submit" class="btn-register">
+                    <i class="fas fa-user-plus"></i> Đăng ký tài khoản
+                </button>
+
+                <div class="login-link">
+                    Đã có tài khoản? <a href="login.html">Đăng nhập ngay</a>
+                </div>
             </form>
         </div>
-    </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Gia Sư Toàn Diện</h3>
+                    <p>Nền tảng kết nối gia sư và học viên uy tín hàng đầu Việt Nam.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên kết nhanh</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="features.html">Tính năng</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="login.html">Đăng nhập</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên hệ</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-phone"></i> 0123.456.789</li>
+                        <li><i class="fas fa-envelope"></i> info@giasutoandien.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Nguyễn Văn Linh, Q.7, TP.HCM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Gia Sư Toàn Diện. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Xử lý form đăng ký
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+            
+            if(password !== confirmPassword) {
+                alert('Mật khẩu xác nhận không khớp!');
+                return;
+            }
+            
+            if(!terms) {
+                alert('Vui lòng đồng ý với điều khoản dịch vụ!');
+                return;
+            }
+            
+            // Demo register success
+            alert('Đăng ký thành công! Chuyển hướng đến trang đăng nhập...');
+            window.location.href = 'login.html';
+        });
+    </script>
 </body>
 </html>
