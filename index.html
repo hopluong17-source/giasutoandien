@@ -3,424 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gia Sư Toàn Diện - Hệ thống Quản lý</title>
+    <title>Gia Sư Toàn Diện - Trang chủ</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --success: #27ae60;
-            --warning: #f39c12;
-            --danger: #e74c3c;
-            --light: #ecf0f1;
+            --primary: #3498db;
+            --secondary: #2ecc71;
             --dark: #2c3e50;
-            --sidebar-width: 250px;
+            --light: #ecf0f1;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        body {
-            background: #f8f9fa;
-            color: #333;
-        }
-
-        /* Layout chính */
-        .app-container {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: var(--primary);
-            color: white;
+        
+        .navbar {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            transition: all 0.3s;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
-
-        .logo {
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .logo h1 {
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        .nav-menu {
-            padding: 20px 0;
-        }
-
-        .nav-item {
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: all 0.3s;
-            border-left: 4px solid transparent;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border-left-color: var(--secondary);
-        }
-
-        .nav-item i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        /* Main content */
-        .main-content {
-            flex: 1;
-            margin-left: var(--sidebar-width);
-            padding: 20px;
-        }
-
-        /* Header */
-        .header {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: between;
-            align-items: center;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--secondary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--secondary);
-        }
-
-        .stat-card.success { border-left-color: var(--success); }
-        .stat-card.warning { border-left-color: var(--warning); }
-        .stat-card.danger { border-left-color: var(--danger); }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-
-        /* Tables */
-        .content-section {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        .section-header {
-            padding: 15px 20px;
-            border-bottom: 1px solid #ecf0f1;
+        
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .table-responsive {
-            overflow-x: auto;
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
         }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ecf0f1;
-        }
-
-        th {
-            background: #f8f9fa;
-            font-weight: 600;
+        
+        .nav-links a {
+            text-decoration: none;
             color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
         }
-
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #8e44ad);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
         .btn {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
+            display: inline-block;
+            padding: 12px 30px;
             background: var(--secondary);
             color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: transform 0.3s;
         }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-
-        .btn-sm {
-            padding: 5px 10px;
-            font-size: 0.8rem;
-        }
-
-        .status-badge {
-            padding: 4px 8px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .status-active { background: #d4edda; color: #155724; }
-        .status-pending { background: #fff3cd; color: #856404; }
-        .status-inactive { background: #f8d7da; color: #721c24; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            .main-content {
-                margin-left: 0;
-            }
-            .mobile-menu-btn {
-                display: block;
-            }
+        
+        .btn:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
-    <div class="app-container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="logo">
-                <h1>Gia Sư Toàn Diện</h1>
-            </div>
-            <nav class="nav-menu">
-                <a href="#" class="nav-item active">
-                    <i>📊</i> Tổng quan
-                </a>
-                <a href="#" class="nav-item">
-                    <i>👨‍🏫</i> Quản lý Gia sư
-                </a>
-                <a href="#" class="nav-item">
-                    <i>👨‍🎓</i> Quản lý Học viên
-                </a>
-                <a href="#" class="nav-item">
-                    <i>📚</i> Quản lý Lớp học
-                </a>
-                <a href="#" class="nav-item">
-                    <i>📅</i> Lịch dạy
-                </a>
-                <a href="#" class="nav-item">
-                    <i>💰</i> Tài chính
-                </a>
-                <a href="#" class="nav-item">
-                    <i>📈</i> Báo cáo
-                </a>
-                <a href="#" class="nav-item">
-                    <i>⚙️</i> Cài đặt
-                </a>
-            </nav>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Gia Sư Toàn Diện</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Trang chủ</a></li>
+                <li><a href="features.html">Tính năng</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html">Đăng nhập</a></li>
+                <li><a href="register.html">Đăng ký</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Header -->
-            <div class="header">
-                <h2>Tổng quan hệ thống</h2>
-                <div class="user-info">
-                    <div class="user-avatar">QL</div>
-                    <span>Quản lý trung tâm</span>
-                </div>
-            </div>
-
-            <!-- Stats -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">42</div>
-                    <div class="stat-label">Tổng số gia sư</div>
-                </div>
-                <div class="stat-card success">
-                    <div class="stat-number">156</div>
-                    <div class="stat-label">Học viên đang học</div>
-                </div>
-                <div class="stat-card warning">
-                    <div class="stat-number">28</div>
-                    <div class="stat-label">Lớp học đang hoạt động</div>
-                </div>
-                <div class="stat-card danger">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Lớp chờ gia sư</div>
-                </div>
-            </div>
-
-            <!-- Recent Tutors -->
-            <div class="content-section">
-                <div class="section-header">
-                    <h3>Gia sư mới nhất</h3>
-                    <button class="btn btn-primary">Xem tất cả</button>
-                </div>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Họ tên</th>
-                                <th>Môn dạy</th>
-                                <th>Kinh nghiệm</th>
-                                <th>Trạng thái</th>
-                                <th>Thao tác</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Nguyễn Văn A</td>
-                                <td>Toán, Lý</td>
-                                <td>3 năm</td>
-                                <td><span class="status-badge status-active">Đang dạy</span></td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm">Chi tiết</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Trần Thị B</td>
-                                <td>Tiếng Anh</td>
-                                <td>5 năm</td>
-                                <td><span class="status-badge status-active">Đang dạy</span></td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm">Chi tiết</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Lê Văn C</td>
-                                <td>Hóa, Sinh</td>
-                                <td>2 năm</td>
-                                <td><span class="status-badge status-pending">Chờ lớp</span></td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm">Chi tiết</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Recent Classes -->
-            <div class="content-section">
-                <div class="section-header">
-                    <h3>Lớp học mới nhất</h3>
-                    <button class="btn btn-primary">Xem tất cả</button>
-                </div>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Mã lớp</th>
-                                <th>Môn học</th>
-                                <th>Học viên</th>
-                                <th>Gia sư</th>
-                                <th>Trạng thái</th>
-                                <th>Thao tác</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>LOP-001</td>
-                                <td>Toán 12</td>
-                                <td>Nguyễn Văn X</td>
-                                <td>Nguyễn Văn A</td>
-                                <td><span class="status-badge status-active">Đang học</span></td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm">Chi tiết</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>LOP-002</td>
-                                <td>Tiếng Anh 10</td>
-                                <td>Trần Thị Y</td>
-                                <td>Trần Thị B</td>
-                                <td><span class="status-badge status-active">Đang học</span></td>
-                                <td>
-                                    <button class="btn btn-primary btn-sm">Chi tiết</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>LOP-003</td>
-                                <td>Hóa 11</td>
-                                <td>Lê Văn Z</td>
-                                <td>Đang tìm</td>
-                                <td><span class="status-badge status-pending">Chờ gia sư</span></td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Phân công</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <section class="hero">
+        <div class="container">
+            <h1>Hệ thống Quản lý Gia Sư Chuyên nghiệp</h1>
+            <p>Giải pháp toàn diện cho trung tâm gia sư của bạn</p>
+            <a href="features.html" class="btn">Khám phá tính năng</a>
+            <a href="register.html" class="btn">Đăng ký ngay</a>
         </div>
-    </div>
-
-    <script>
-        // Xử lý responsive menu
-        document.addEventListener('DOMContentLoaded', function() {
-            // Xử lý active menu
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    navItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
-        });
-    </script>
+    </section>
 </body>
 </html>
