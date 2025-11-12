@@ -3,32 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gia Sư Toàn Diện - Trang chủ</title>
+    <title>Gia Sư Toàn Diện - Hệ thống Quản lý Chuyên nghiệp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #3498db;
             --secondary: #2ecc71;
+            --accent: #e74c3c;
             --dark: #2c3e50;
             --light: #ecf0f1;
+            --text: #34495e;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
         .navbar {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: var(--shadow);
         }
-        
+
         .nav-container {
             width: 90%;
             max-width: 1200px;
@@ -37,78 +49,286 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        
+
+        .logo i {
+            color: var(--secondary);
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
         }
-        
+
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
         }
-        
-        .nav-links a:hover, .nav-links a.active {
+
+        .nav-links a:hover {
             color: var(--primary);
+            background: rgba(52, 152, 219, 0.1);
         }
-        
+
+        .nav-links a.active {
+            color: var(--primary);
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary), #8e44ad);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 50px;
             color: white;
-            padding: 120px 0 80px;
+        }
+
+        .hero-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
             text-align: center;
         }
-        
+
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
         }
-        
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
             background: var(--secondary);
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 0 10px;
-            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
         }
-        
-        .btn:hover {
-            transform: translateY(-2px);
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Features Preview */
+        .features-preview {
+            background: white;
+            padding: 80px 0;
+            border-radius: 50px 50px 0 0;
+            margin-top: -50px;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid #f8f9fa;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Gia Sư Toàn Diện</div>
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                Gia Sư Toàn Diện
+            </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Trang chủ</a></li>
-                <li><a href="features.html">Tính năng</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="login.html">Đăng nhập</a></li>
-                <li><a href="register.html">Đăng ký</a></li>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li><a href="features.html"><i class="fas fa-star"></i> Tính năng</a></li>
+                <li><a href="dashboard.html"><i class="fas fa-chart-bar"></i> Dashboard</a></li>
+                <li><a href="login.html" class="btn-outline" style="color: var(--primary); border-color: var(--primary);"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a></li>
+                <li><a href="register.html" class="btn-primary"><i class="fas fa-user-plus"></i> Đăng ký</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <h1>Hệ thống Quản lý Gia Sư Chuyên nghiệp</h1>
-            <p>Giải pháp toàn diện cho trung tâm gia sư của bạn</p>
-            <a href="features.html" class="btn">Khám phá tính năng</a>
-            <a href="register.html" class="btn">Đăng ký ngay</a>
+        <div class="hero-content">
+            <h1>Hệ Thống Quản Lý Gia Sư <span style="color: var(--secondary)">Thông Minh</span></h1>
+            <p>Giải pháp toàn diện giúp quản lý trung tâm gia sư hiệu quả, tiết kiệm thời gian và tăng năng suất làm việc</p>
+            <div class="btn-group">
+                <a href="features.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Khám phá ngay
+                </a>
+                <a href="register.html" class="btn btn-outline">
+                    <i class="fas fa-play-circle"></i> Bắt đầu miễn phí
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Preview -->
+    <section class="features-preview">
+        <div class="section-title">
+            <h2>Tính Năng Nổi Bật</h2>
+            <p>Khám phá những tính năng ưu việt giúp quản lý trung tâm hiệu quả</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3>Quản lý Gia sư</h3>
+                <p>Theo dõi thông tin, lịch dạy và đánh giá chất lượng gia sư</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h3>Quản lý Học viên</h3>
+                <p>Quản lý hồ sơ, lịch học và kết quả học tập của học viên</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Quản lý Lớp học</h3>
+                <p>Tạo và quản lý lớp học, phân công gia sư phù hợp</p>
+            </div>
         </div>
     </section>
 </body>
